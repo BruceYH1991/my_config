@@ -16,21 +16,24 @@ set $mod Mod4
 font pango:monospace 12
 
 
-# 开机启动项
-exec_always variety
-exec_always compton
 
-exec_always fcitx
+# 开机启动项
+exec --no-startup-id variety
+exec --no-startup-id albert
+#exec --no-startup-id pa-applet
+exec_always --no-startup-id compton
+
+exec_always --no-startup-id fcitx
 
 # 触板配置
-exec_always synclient VertScrollDelta=-27
-exec_always synclient HorizScrollDelta=-27
-exec_always synclient TapButton1=1
-exec_always synclient TapButton2=3
-exec_always synclient TapButton3=2
+exec_always --no-startup-id synclient VertScrollDelta=-27
+exec_always --no-startup-id synclient HorizScrollDelta=-27
+exec_always --no-startup-id synclient TapButton1=1
+exec_always --no-startup-id synclient TapButton2=3
+exec_always --no-startup-id synclient TapButton3=2
 
 
-
+focus_follows_mouse no
 
 
 
@@ -111,6 +114,11 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+# exec i3lock
+#bindsym $mod+l exec i3lock --raw 3840X2160:rgb -i /usr/share/backgrounds/illyria-default-lockscreen.jpg
+bindsym $mod+ctrl+l exec --no-startup-id i3lock-fancy
+
+
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
@@ -163,10 +171,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 1 px or 1 ppt
+        bindsym j resize grow height 1 px or 1 ppt
+        bindsym k resize shrink height 1 px or 1 ppt
+        bindsym l resize grow width 1 px or 1 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -183,20 +191,26 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 
-new_window 1pixel
 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
-}
+
+# polybar
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+#bar {
+#        status_command i3status
+#        i3bar_command $HOME/.config/polybar/launch.sh
+#}
 
 
-gaps inner 15
+new_window 1pixel
+
+# gaps inner 15
 
 
-
+# assign [ckass="pycharm"] 2
 
 
 
