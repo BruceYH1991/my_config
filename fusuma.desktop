@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Encoding=UTF-8
+Name=fusuma
+Comment=fusuma
+Exec=fusuma
+Icon=/usr/share/icons/manjaro-logo.png
+Terminal=false  #软件打开时是否启动终端，这里选择false
+StartupNotify=false
+Type=Application
+Categories=Application;Development;
